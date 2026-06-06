@@ -86,7 +86,7 @@ export default function App() {
                                 router.push(`/challenge?amount=${amount}`)
                                 setModalOpen(!modalOpen);
                             }}>
-                            <Text style={styles.textStyle}>Hide Modal</Text>
+                            <Text style={styles.textStyle}>Start challenge !</Text>
                         </Pressable>
                     </View>
                 </View>
