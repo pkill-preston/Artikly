@@ -26,6 +26,7 @@ export default function Daily() {
 	const dailyWord = word[0];
 
     const screenWidth = Dimensions.get("window").width;
+	const screenHeight = Dimensions.get("window").height;
 
     const getWords = async () => {
         try {
@@ -76,16 +77,20 @@ export default function Daily() {
 	}
 
     return (
-        <View>
-            {isLoading ? <Text>Loading...</Text> : <CardSwiper words={word} setIsOpen={setModalOpen} currentIndex={0} onSwipe={() => {
-            }}/>}
+		<View style={{
+			width: screenWidth,
+			height: screenHeight,
+			overflow: "hidden",
+		}}>
+			{isLoading ? <Text>Loading...</Text> : <CardSwiper words={word} setIsOpen={setModalOpen} currentIndex={0} onSwipe={() => {
+			}}/>}
 			<Modal
 				animationType="fade"
-		        transparent={true}
-		        backdropColor={"#000000"}
-		        pointerEvents={"auto"}
-		        visible={modalOpen}
-		        onRequestClose={() => {
+				transparent={true}
+				backdropColor={"#000000"}
+				pointerEvents={"auto"}
+				visible={modalOpen}
+				onRequestClose={() => {
 					setTimeout(() => {
 						setModalOpen(false);
 					}, 600);
@@ -105,7 +110,7 @@ export default function Daily() {
 					router.push("/");
 				}}
 			>
-				<View style={[styles.centeredView, { padding: 8 }]}>
+				<View style={[styles.centeredView]}>
 					<View
 						style={[
 							styles.modalView,
@@ -132,7 +137,7 @@ export default function Daily() {
 									<View style={styles.scoreRing}>
 										<Check
 											color={"#1e9e23"}
-									        size={64}
+											size={64}
 										/>
 									</View>
 
@@ -162,7 +167,7 @@ export default function Daily() {
 									>
 										<X
 											color={"#ef5350"}
-									        size={64}
+											size={64}
 										/>
 									</View>
 
@@ -187,7 +192,7 @@ export default function Daily() {
 						<View style={styles.exitButtonContainer}>
 							<Pressable
 								style={styles.exitButton}
-						        onPress={() => {
+								onPress={() => {
 									if (dailyWord?.id) {
 										markCompleted(
 											dailyWord.id,
@@ -212,7 +217,7 @@ export default function Daily() {
 					</View>
 				</View>
 			</Modal>
-        </View>
+		</View>
     );
 }
 

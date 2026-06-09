@@ -12,6 +12,7 @@ export default function Daily() {
     const [modalOpen, setModalOpen] = useState(false);
     const appStore = useAppStore();
     const screenWidth = Dimensions.get("window").width;
+    const screenHeight = Dimensions.get("window").height;
 
     const getWords = async () => {
         try {
@@ -34,7 +35,11 @@ export default function Daily() {
 
 
     return (
-        <View>
+        <View style={{
+            width: screenWidth,
+            height: screenHeight,
+            overflow: "hidden",
+        }}>
             {isLoading ? <Text>Loading...</Text> : <CardSwiper words={word} currentIndex={0} setIsOpen={setModalOpen} onSwipe={() => {
             }}/>}
             <Modal

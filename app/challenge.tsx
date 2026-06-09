@@ -22,6 +22,7 @@ export default function Challenge() {
 
 	const { amount } = useLocalSearchParams() as unknown as { amount: number };
 	const screenWidth = Dimensions.get("window").width;
+	const screenHeight = Dimensions.get("window").height;
 	const percentage =
 		appStore.totalGuesses === 0
 			? 0
@@ -56,7 +57,11 @@ export default function Challenge() {
 	}
 
 	return (
-		<View>
+		<View style={{
+			width: screenWidth,
+			height: screenHeight,
+			overflow: "hidden",
+		}}>
 			{isLoading ? <Text>Loading...</Text> : <CardSwiper words={words} currentIndex={0} setIsOpen={setModalOpen} onSwipe={handleSwipe}/>}
 			<Modal
 				animationType="fade"
