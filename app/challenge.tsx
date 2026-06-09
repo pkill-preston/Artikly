@@ -59,7 +59,7 @@ export default function Challenge() {
 	return (
 		<View style={{
 			width: screenWidth,
-			height: screenHeight,
+			height: screenHeight - 87,
 			overflow: "hidden",
 		}}>
 			{isLoading ? <Text>Loading...</Text> : <CardSwiper words={words} currentIndex={0} setIsOpen={setModalOpen} onSwipe={handleSwipe}/>}
