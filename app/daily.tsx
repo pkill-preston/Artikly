@@ -79,7 +79,7 @@ export default function Daily() {
     return (
 		<View style={{
 			width: screenWidth,
-			height: screenHeight,
+			height: screenHeight - 87,
 			overflow: "hidden",
 		}}>
 			{isLoading ? <Text>Loading...</Text> : <CardSwiper words={word} setIsOpen={setModalOpen} currentIndex={0} onSwipe={() => {
